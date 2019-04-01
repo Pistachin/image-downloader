@@ -48,6 +48,7 @@ const downloader = async () => {
   for (let i = firstPhoto; i <= lastPhoto; i++) {
     const photoName = getPhotoName(i)
     const status = tenCalculator(i)
+    // To let know user what's going on
     if (i === 1) alert(`Starting download`)
     if (status) {
         console.log(`Downloaded ${i} of ${lastPhoto} photos`)
