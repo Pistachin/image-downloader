@@ -1,0 +1,17 @@
+{
+  "name": "image-downloader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alert-node": "^1.2.3",
+    "nexe": "^3.0.0",
+    "node-fetch": "^2.3.0"
+  },
+  "description": ""
+}
