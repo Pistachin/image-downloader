@@ -6,7 +6,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": ["emilioriosvz", "pistachin"],
   "license": "ISC",
   "dependencies": {
     "alert-node": "^1.2.3",
