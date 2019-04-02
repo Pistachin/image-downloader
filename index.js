@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const alert = require('alert-node')
+const logUpdate = require('log-update')
 const { join } = require('path')
 const { createWriteStream, mkdirSync, accessSync} = require('fs')
 const DIR = join(__dirname, 'sitter/making-of')
@@ -32,7 +33,7 @@ const downloadFile = async (url, absolutePath) => {
 }
 
 const tenCalculator = (val) => {
-	let valSplitter = val / 50
+	let valSplitter = val / 25
 	let valFloor = Math.floor(valSplitter)
 	let valCeil = Math.ceil(valSplitter)
 	if (valFloor === valCeil) return val
@@ -49,9 +50,12 @@ const downloader = async () => {
     const photoName = getPhotoName(i)
     const status = tenCalculator(i)
     // To let know user what's going on
-    if (i === 1) alert(`Starting download`)
+    if (i === 1) {
+        alert(`Starting download`)
+        console.log('Starting download');
+    }
+    logUpdate(`Downloaded ${i} of ${lastPhoto} photos`)
     if (status) {
-        console.log(`Downloaded ${i} of ${lastPhoto} photos`)
         alert(`Downloaded ${i} of ${lastPhoto} photos`)
     }
 
