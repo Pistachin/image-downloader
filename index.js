@@ -2,9 +2,9 @@ const fetch = require('node-fetch')
 const alert = require('alert-node')
 const logUpdate = require('log-update')
 const { join } = require('path')
-const { createWriteStream, mkdirSync, accessSync} = require('fs')
+const { createWriteStream, mkdirSync, accessSync } = require('fs')
 const DIR = join(__dirname, 'sitter/making-of')
-const BASE_URL = 'http://helenagonzalezdop.com/sitter/img'
+const BASE_URL = ''
 const firstPhoto = 1
 const lastPhoto = 221
 
@@ -13,7 +13,7 @@ const createFolder = dir => {
     accessSync(dir) // if dir doesn't exist will fail
   } catch (error) {
     if (error && error.code === 'ENOENT') {
-      mkdirSync(dir, {recursive: true})
+      mkdirSync(dir, { recursive: true })
     }
   }
 }
@@ -33,10 +33,10 @@ const downloadFile = async (url, absolutePath) => {
 }
 
 const tenCalculator = (val) => {
-	let valSplitter = val / 25
-	let valFloor = Math.floor(valSplitter)
-	let valCeil = Math.ceil(valSplitter)
-	if (valFloor === valCeil) return val
+  let valSplitter = val / 25
+  let valFloor = Math.floor(valSplitter)
+  let valCeil = Math.ceil(valSplitter)
+  if (valFloor === valCeil) return val
 }
 
 const downloader = async () => {
@@ -51,19 +51,19 @@ const downloader = async () => {
     const status = tenCalculator(i)
     // To let know user what's going on
     if (i === 1) {
-        alert(`Starting download`)
-        console.log('Starting download');
+      alert(`Starting download`)
+      console.log('Starting download')
     }
     logUpdate(`Downloaded ${i} of ${lastPhoto} photos`)
     if (status) {
-        alert(`Downloaded ${i} of ${lastPhoto} photos`)
+      alert(`Downloaded ${i} of ${lastPhoto} photos`)
     }
 
     await downloadFile(`${BASE_URL}/${photoName}`, join(DIR, photoName))
       .catch(console.error)
   }
-  console.log('Download complete');
-  alert('Download complete');
+  console.log('Download complete')
+  alert('Download complete')
 }
 
 downloader()
